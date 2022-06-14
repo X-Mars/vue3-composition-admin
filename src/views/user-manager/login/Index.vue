@@ -93,7 +93,7 @@
         {{ t("login.logIn") }}
       </el-button>
 
-      <div style="position:relative">
+      <!-- <div style="position:relative">
         <div class="tips">
           <span>{{ t("login.username") }} : admin </span>
           <span>{{ t("login.password") }} : {{ t("login.any") }} </span>
@@ -110,10 +110,10 @@
         >
           {{ t("login.thirdparty") }}
         </el-button>
-      </div>
+      </div> -->
     </el-form>
 
-    <el-dialog
+    <!-- <el-dialog
       :title="t('login.thirdparty')"
       v-model="showDialog"
     >
@@ -122,7 +122,7 @@
       <br>
       <br>
       <SocialSign />
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -137,7 +137,7 @@ import {
   toRefs
 } from 'vue'
 import LangSelect from '@/components/lang_select/Index.vue'
-import SocialSign from './components/SocialSignin.vue'
+// import SocialSign from './components/SocialSignin.vue'
 import { isValidUsername } from '@/utils/validate'
 import { useRoute, LocationQuery, useRouter } from 'vue-router'
 import { useStore } from '@/store'
@@ -145,8 +145,7 @@ import { UserActionTypes } from '@/store/modules/user/action-types'
 import { useI18n } from 'vue-i18n'
 export default defineComponent({
   components: {
-    LangSelect,
-    SocialSign
+    LangSelect
   },
   setup() {
     const userNameRef = ref(null)
@@ -159,7 +158,7 @@ export default defineComponent({
     const state = reactive({
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: 'twgdhbtzhy'
       },
       loginRules: {
         username: [{ validator: userNameRef, trigger: 'blur' }],

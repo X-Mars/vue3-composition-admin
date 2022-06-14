@@ -12,7 +12,7 @@ import { Mutations } from './mutations'
 import { UserMutationTypes } from './mutation-types'
 import { UserActionTypes } from './action-types'
 import { loginRequest, userInfoRequest } from '@/apis/user'
-import { removeToken, setToken } from '@/utils/cookies'
+import { removeToken, setToken, getToken } from '@/utils/cookies'
 import { PermissionActionType } from '../permission/action-types'
 import router, { resetRouter } from '@/router'
 import { RouteRecordRaw } from 'vue-router'
@@ -51,9 +51,10 @@ export const actions: ActionTree<UserState, RootState> & Actions = {
     let { username, password } = userInfo
     username = username.trim()
     await loginRequest({ username, password }).then(async(res) => {
-      if (res?.code === 0 && res.data.accessToken) {
-        setToken(res.data.accessToken)
-        commit(UserMutationTypes.SET_TOKEN, res.data.accessToken)
+      console.log('loginRequest======', res)
+      if (res.access) {
+        setToken(res.access)
+        commit(UserMutationTypes.SET_TOKEN, res.access)
       }
     }).catch((err) => {
       console.log(err)
